@@ -1,0 +1,37 @@
+.Page-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px);
+  font-size: 62.5%;
+  background: url("../../images/stars.svg"), #1b1b25;
+  background-repeat: repeat;
+  color: #ffffff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Page-container img {
+  width: 100%;
+}
+
+.Page-container h1 {
+  text-align: center;
+  font-size: 3.4rem;
+}
+
+@media (min-width: 500px) {
+  .Page-container img {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .Page-container img {
+    width: 30%;
+  }
+
+  .Page-container h1 {
+    font-size: 4rem;
+  }
+}

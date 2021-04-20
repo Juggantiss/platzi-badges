@@ -1,0 +1,47 @@
+.BadgesList ul > li {
+  margin-bottom: 1rem;
+}
+
+.BadgesListItem li .BadgesListItem__name {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #7dcd40;
+}
+
+.BadgesListItem {
+  background: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+  display: flex;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.BadgesListItem p {
+  margin: 0;
+}
+
+.BadgesListItem__avatar {
+  border-radius: 50%;
+  background: #a3a3a3;
+  margin-right: 0.5rem;
+  width: 80px;
+  height: 80px;
+}
+
+.BadgesListItem__email {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.BadgesListItem__email span {
+  margin-left: 0.5rem;
+  color: #0791e6;
+}
+
+.BadgesListItem__job {
+  color: #757575;
+}

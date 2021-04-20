@@ -1,0 +1,33 @@
+.Home {
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  background: url("../../images/stars.svg"), #1b1b25;
+  background-repeat: repeat;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Home__col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.Badges__buttons-home {
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1000px) {
+  .Home {
+    flex-direction: row;
+  }
+
+  .Home__col {
+    align-items: flex-start;
+  }
+}
