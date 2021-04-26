@@ -3,7 +3,11 @@ import React, { Component, Fragment } from "react";
 import "./styles/Badges.css";
 import confLogo from "../images/badge-header.svg";
 import BadgesList from "../components/BadgesList";
+import PageLoading from "../components/PageLoading";
 import { Link } from "react-router-dom";
+
+import api from "../api";
+import PageError from "../components/PageError";
 
 class Badges extends Component {
   state = {
@@ -16,10 +20,10 @@ class Badges extends Component {
     this.fetchData();
   }
 
-  fetchData = () => {
+  fetchData = async () => {
     this.setState({ loading: true, error: null });
     try {
-      const data = [];
+      const data = await api.badges.list();
       this.setState({ loading: false, data: data });
     } catch (error) {
       this.setState({ loading: false, error: error });
@@ -28,7 +32,11 @@ class Badges extends Component {
 
   render() {
     if (this.state.loading === true) {
-      return "Loading...";
+      return <PageLoading />;
+    }
+
+    if (this.state.error) {
+      return <PageError error={this.state.error} />;
     }
 
     return (
