@@ -2,8 +2,7 @@ import React, { Component, Fragment } from "react";
 
 import "./styles/BadgeNew.css";
 
-import header from "../images/badge-header.svg";
-import fotoJuan from "../images/logo_cara_sin_nombre_blanco.png";
+import header from "../images/platziconf-logo.svg";
 import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
 
@@ -14,7 +13,7 @@ class BadgeNew extends Component {
       lastName: "",
       email: "",
       jobTitle: "",
-      user: "",
+      twitter: "",
     },
   };
   handleChange = (e) => {
@@ -27,23 +26,22 @@ class BadgeNew extends Component {
   };
 
   render() {
-    const { firstName, lastName, email, jobTitle, user } = this.state.form;
+    const { firstName, lastName, email, jobTitle, twitter } = this.state.form;
     return (
       <Fragment>
         <div className="BadgeNew__hero">
-          <img className="img-fluid" src={header} alt="" />
+          <img className="BadgeNew__hero-image img-fluid" src={header} alt="" />
         </div>
 
         <div className="container">
           <div className="row">
             <div className="col-6">
               <Badge
-                firstName={firstName}
-                lastName={lastName}
-                jobTitle={jobTitle}
-                user={user}
-                email={email}
-                avatar={fotoJuan}
+                firstName={firstName || "First Name"}
+                lastName={lastName || "Last Name"}
+                jobTitle={jobTitle || "JOB_TITLE"}
+                twitter={twitter || "Twitter"}
+                email={email || "Email"}
               />
             </div>
 
