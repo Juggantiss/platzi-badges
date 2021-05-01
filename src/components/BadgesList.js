@@ -4,6 +4,28 @@ import Gravatar from "../components/Gravatar";
 
 import "./styles/BadgesList.css";
 
+class BadgesListItem extends Component {
+  render() {
+    return (
+      <div className="BadgesListItem">
+        <Gravatar
+          className="BadgesListItem__avatar"
+          email={this.props.badge.email}
+        />
+
+        <div>
+          <strong>
+            {this.props.badge.firstName} {this.props.badge.lastName}
+          </strong>
+          <br />@{this.props.badge.twitter}
+          <br />
+          {this.props.badge.jobTitle}
+        </div>
+      </div>
+    );
+  }
+}
+
 class BadgesList extends Component {
   render() {
     const { badges } = this.props;
@@ -24,22 +46,14 @@ class BadgesList extends Component {
         <ul className="list-unstyled">
           {badges.map((badge) => {
             return (
-              <div key={badge.id} className="BadgesListItem">
-                <Gravatar
-                  className="BadgesListItem__avatar"
-                  email={badge.email}
-                />
-                <li>
-                  <p className="BadgesListItem__name">
-                    {badge.firstName} {badge.lastName}
-                  </p>
-                  <div className="BadgesListItem__email">
-                    <p>{badge.email}</p>
-                    <span>@{badge.twitter}</span>
-                  </div>
-                  <p className="BadgesListItem__job">{badge.jobTitle}</p>
-                </li>
-              </div>
+              <li key={badge.id}>
+                <Link
+                  className="text-reset text-decoration-none"
+                  to={`/badges/${badge.id}/edit`}
+                >
+                  <BadgesListItem badge={badge} />
+                </Link>
+              </li>
             );
           })}
         </ul>
