@@ -17,8 +17,6 @@ class BadgeForm extends Component {
 
     return (
       <div>
-        <h1>New Attendant</h1>
-
         <form>
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>

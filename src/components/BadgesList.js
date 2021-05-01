@@ -1,51 +1,104 @@
-import React, { Component } from "react";
+import React, { Component, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Gravatar from "../components/Gravatar";
 
 import "./styles/BadgesList.css";
 
-class BadgesList extends Component {
+class BadgesListItem extends Component {
   render() {
-    const { badges } = this.props;
-    badges.reverse();
-    if (badges.length === 0) {
-      return (
-        <div>
-          <h3>No badges were found</h3>
-          <Link className="btn btn-primary" to="/badges/new">
-            Create new badge
-          </Link>
-        </div>
-      );
-    }
-
     return (
-      <div className="BadgesList">
-        <ul className="list-unstyled">
-          {badges.map((badge) => {
-            return (
-              <div key={badge.id} className="BadgesListItem">
-                <Gravatar
-                  className="BadgesListItem__avatar"
-                  email={badge.email}
-                />
-                <li>
-                  <p className="BadgesListItem__name">
-                    {badge.firstName} {badge.lastName}
-                  </p>
-                  <div className="BadgesListItem__email">
-                    <p>{badge.email}</p>
-                    <span>@{badge.twitter}</span>
-                  </div>
-                  <p className="BadgesListItem__job">{badge.jobTitle}</p>
-                </li>
-              </div>
-            );
-          })}
-        </ul>
+      <div className="BadgesListItem">
+        <Gravatar
+          className="BadgesListItem__avatar"
+          email={this.props.badge.email}
+        />
+
+        <div>
+          <strong>
+            {this.props.badge.firstName} {this.props.badge.lastName}
+          </strong>
+          <br />@{this.props.badge.twitter}
+          <br />
+          {this.props.badge.jobTitle}
+        </div>
       </div>
     );
   }
+}
+
+function useSearchBadges(badges) {
+  const [query, setQuery] = useState("");
+  const [filteredBadges, setFilteredBadges] = useState(badges);
+
+  useMemo(() => {
+    const result = badges.filter((badge) => {
+      return `${badge.firstName} ${badge.lastName}`
+        .toLowerCase()
+        .includes(query.toLowerCase());
+    });
+    setFilteredBadges(result);
+  }, [badges, query]);
+
+  return { query, setQuery, filteredBadges };
+}
+
+function BadgesList(props) {
+  const badges = props.badges.reverse();
+
+  const { query, setQuery, filteredBadges } = useSearchBadges(badges);
+
+  if (filteredBadges.length === 0) {
+    return (
+      <div>
+        <div className="form-group">
+          <label htmlFor="filter-badges">Filter Badges</label>
+          <input
+            type="text"
+            className="form-control"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+          />
+        </div>
+        <h3>No badges were found</h3>
+        <Link className="btn btn-primary" to="/badges/new">
+          Create new badge
+        </Link>
+      </div>
+    );
+  }
+
+  return (
+    <div className="BadgesList">
+      <div className="form-group">
+        <label htmlFor="filter-badges">Filter Badges</label>
+        <input
+          type="text"
+          className="form-control"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+        />
+      </div>
+
+      <ul className="list-unstyled">
+        {filteredBadges.map((badge) => {
+          return (
+            <li key={badge.id}>
+              <Link
+                className="text-reset text-decoration-none"
+                to={`/badges/${badge.id}`}
+              >
+                <BadgesListItem badge={badge} />
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
 export default BadgesList;
