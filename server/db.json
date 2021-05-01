@@ -440,6 +440,38 @@
       "jobTitle": "Lawyer",
       "twitter": "ckaufmanpr",
       "id": "npaYZKI"
+    },
+    {
+      "firstName": "Juan Raul",
+      "lastName": "Lopez",
+      "email": "juggantiss@gmail.com",
+      "jobTitle": "React Dev",
+      "twitter": "Juggantis",
+      "id": "8Rk0ovM"
+    },
+    {
+      "firstName": "Miguel ",
+      "lastName": "Toledo",
+      "email": "geaglts@gmail.com",
+      "jobTitle": "Software Enginner",
+      "twitter": "geaglts",
+      "id": "sk-av8I"
+    },
+    {
+      "firstName": "Rafael",
+      "lastName": "Cuevas",
+      "email": "rafa@gmail.com",
+      "jobTitle": "System Enginner",
+      "twitter": "albedo",
+      "id": "4yXvCbp"
+    },
+    {
+      "firstName": "Alexis",
+      "lastName": "Regalado",
+      "email": "alexis@gmail.com",
+      "jobTitle": "Developer",
+      "twitter": "odalager",
+      "id": "mxJ9BTM"
     }
   ]
 }

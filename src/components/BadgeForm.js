@@ -5,19 +5,15 @@ class BadgeForm extends Component {
     jobTitle: "React Dev",
   };
 
-  handleClick = (e) => {
-    e.preventDefault();
-    console.log("Boton presionado");
-    console.log(this.state);
-  };
-
-  handleSubmit = (e) => {
-    console.log("Form was submitted");
-  };
+  // handleClick = (e) => {
+  //   e.preventDefault();
+  //   console.log("Boton presionado");
+  //   console.log(this.state);
+  // };
 
   render() {
-    const { onChange, formValues } = this.props;
-    const { firstName, lastName, email, jobTitle, user } = formValues;
+    const { onChange, formValues, onSubmit, error } = this.props;
+    const { firstName, lastName, email, jobTitle, twitter } = formValues;
 
     return (
       <div>
@@ -69,19 +65,21 @@ class BadgeForm extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="user">User</label>
+            <label htmlFor="twitter">Twitter</label>
             <input
               className="form-control"
               type="text"
-              name="user"
+              name="twitter"
               onChange={onChange}
-              value={user}
+              value={twitter}
             />
           </div>
 
-          <button onClick={this.handleClick} className="btn btn-primary">
+          <button onClick={onSubmit} className="btn btn-primary">
             Save
           </button>
+
+          {error && <p className="text-danger">{error.message}</p>}
         </form>
       </div>
     );
