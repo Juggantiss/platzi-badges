@@ -22,7 +22,7 @@ class Badge extends Component {
 
         <div className="Badge__section-info">
           <h3>{jobTitle}</h3>
-          <div>@{twitter}</div>
+          <div className="Badge__twitter">@{twitter}</div>
         </div>
 
         <div className="Badge__footer">#platziconf</div>
