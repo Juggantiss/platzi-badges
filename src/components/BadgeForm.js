@@ -11,19 +11,19 @@ class BadgeForm extends Component {
     console.log(this.state);
   };
 
-  handleSubmit = (e) => {
-    console.log("Form was submitted");
-  };
+  //handleSubmit = (e) => {
+  //  console.log("Form was submitted");
+  //};
 
   render() {
-    const { onChange, formValues } = this.props;
-    const { firstName, lastName, email, jobTitle, user } = formValues;
+    const { onChange, formValues, handleSubmit } = this.props;
+    const { firstName, lastName, email, jobTitle, twitter } = formValues;
 
     return (
       <div>
         <h1>New Attendant</h1>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>
             <input
@@ -69,13 +69,13 @@ class BadgeForm extends Component {
           </div>
 
           <div className="form-group">
-            <label htmlFor="user">User</label>
+            <label htmlFor="user">Twitter</label>
             <input
               className="form-control"
               type="text"
-              name="user"
+              name="twitter"
               onChange={onChange}
-              value={user}
+              value={twitter}
             />
           </div>
 
